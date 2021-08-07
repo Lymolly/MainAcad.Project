@@ -11,7 +11,9 @@ namespace Airline.DAL.Context
 {
     public class ApplicationContext : IdentityDbContext
     {
-        public ApplicationContext(string connectionstring) : base(connectionstring) { }
+        public ApplicationContext(string connectionstring) : base(connectionstring)
+        {
+        }
 
         public DbSet<ClientProfile> ClientProfiles { get; set; }
     }

@@ -99,9 +99,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AirlineProj\Airline.Web.csproj">
+    <ProjectReference Include="..\AirlineProj\AirlineProj.csproj">
       <Project>{2B058DF6-9AE3-4E30-A776-9590E1CC26E5}</Project>
-      <Name>Airline.Web</Name>
+      <Name>AirlineProj</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
