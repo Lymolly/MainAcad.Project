@@ -8,7 +8,16 @@ namespace Airline.Domain.Entities
 {
     public class Info : BaseEntity
     {
-        
-        public string Type { get; set; }
+        public int Id { get; set; }
+        public Plane Plane { get; set; }
+        public string ArrivalTime { get; set; }
+        public string DepartureTime { get; set; }
+        public int FlightNumber { get; set; }
+        public Way Route { get; set; }
+        public FlightStatus FlightStatus { get; set; }
+        public int Terminal { get; set; }
+        public int Gate { get; set; }
+        public decimal Price { get; set; }
+        public ICollection<Passenger> Passengers { get; set; }
     }
 }

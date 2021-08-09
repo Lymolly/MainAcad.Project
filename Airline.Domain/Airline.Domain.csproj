@@ -54,6 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\FlightStatus.cs" />
+    <Compile Include="Entities\Passenger.cs" />
+    <Compile Include="Entities\Plane.cs" />
+    <Compile Include="Entities\Way.cs" />
     <Compile Include="IdentityEntities\ApplicationUser.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="IdentityEntities\ClientProfile.cs" />

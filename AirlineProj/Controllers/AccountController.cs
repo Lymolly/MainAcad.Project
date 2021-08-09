@@ -82,7 +82,7 @@ namespace AirlineProj.Controllers
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succeeded)
                 {
-                    return View("RegisterSucceded");
+                    return View("RegisterSucceded",model:userDto.Name);
                 }
                 else
                 {
@@ -105,8 +105,16 @@ namespace AirlineProj.Controllers
             }, new List<string> { "user", "admin" });
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
+
     }
-    
+
     //public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
     //{
     //    UserManager = userManager;

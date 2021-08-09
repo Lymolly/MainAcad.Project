@@ -1,14 +1,14 @@
 ﻿@using Microsoft.AspNet.Identity
-
+@model string
 @{
     ViewBag.Title = "RegisterSucceded";
 }
-
-<h2>@{
-        User.Identity.GetUserName();
+<style>
+    * {
+        text-align: center;
     }
-    , your registartion succeded!
-</h2>
+</style>
+<h2>@Model, your registartion succeded!</h2>
 <div>
     @Html.ActionLink("Go home","Index","Home");
 </div>
