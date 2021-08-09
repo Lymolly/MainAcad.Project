@@ -40,14 +40,14 @@ namespace AirlineProj.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            await SetInitialDataAsync();
+            //await SetInitialDataAsync();
             if (ModelState.IsValid)
             {
                 UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password };
                 ClaimsIdentity claim = await UserService.Authenticate(userDto);
                 if (claim == null)
                 {
-                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                    ModelState.AddModelError("", "Incorrect login or password!");
                 }
                 else
                 {
@@ -72,21 +72,13 @@ namespace AirlineProj.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            await SetInitialDataAsync();
+            //await SetInitialDataAsync(model);
             if (ModelState.IsValid)
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<RegisterViewModel,UserDTO>());
                 var mapper = new Mapper(config);
                 UserDTO userDto = mapper.Map<UserDTO>(model);
                 userDto.Role = "user";
-                //UserDTO userDto = new UserDTO
-                //{
-                //    Email = model.Email,
-                //    Password = model.Password,
-                //    Address = model.Address,
-                //    Name = model.Name,
-                //    Role = "user"
-                //};
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succeeded)
                 {
@@ -100,15 +92,15 @@ namespace AirlineProj.Controllers
 
             return View(model);
         }
-        private async Task SetInitialDataAsync()
+        private async Task SetInitialDataAsync(RegisterViewModel model)
         {
             await UserService.SetInitializer(new UserDTO
             {
-                Email = "somemail@gmail.com",
-                UserName = "somemail@gmail.com",
-                Password = "Admin123$",
-                Name = "Kozyriev Denys",
-                Address = "Pushkina 3 str.",
+                Email = model.Email,
+                UserName = model.Email,
+                Password = model.Password,
+                Name = model.Name,
+                Address = model.Password,
                 Role = "admin",
             }, new List<string> { "user", "admin" });
         }

@@ -11,6 +11,10 @@ namespace Airline.DAL.Context
 {
     public class ApplicationContext : IdentityDbContext
     {
+        public ApplicationContext()
+        {
+            
+        }
         public ApplicationContext(string connectionstring) : base(connectionstring)
         {
         }

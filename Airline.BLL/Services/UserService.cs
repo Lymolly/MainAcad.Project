@@ -50,7 +50,7 @@ namespace Airline.BLL.Services
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDTO)
         {
             ClaimsIdentity claim = default;
-            ApplicationUser user = await Database.UserManager.FindAsync(userDTO.Email, userDTO.Password);
+            ApplicationUser user = await Database.UserManager.FindAsync(UserNameHelper.CreateUserName(userDTO.Email), userDTO.Password);
             if (user != null)
                 claim = await Database.UserManager.CreateIdentityAsync(user,
                     DefaultAuthenticationTypes.ApplicationCookie);

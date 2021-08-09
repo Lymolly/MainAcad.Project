@@ -58,9 +58,13 @@
     <Compile Include="Context\ApplicationContext.cs" />
     <Compile Include="Interfaces\IClientManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Migrations\202108091110022_sec.cs" />
+    <Compile Include="Migrations\202108091110022_sec.Designer.cs">
+      <DependentUpon>202108091110022_sec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Airline.Domain\Airline.Domain.csproj">
       <Project>{3ccfa195-066d-485a-bba8-78331bf33af1}</Project>
@@ -70,6 +74,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202108091110022_sec.resx">
+      <DependentUpon>202108091110022_sec.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

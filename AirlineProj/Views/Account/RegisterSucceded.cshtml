@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "RegisterSucceded";
+}
+
+<h2>@{
+        User.Identity.GetUserName();
+    }
+    , your registartion succeded!
+</h2>
+<div>
+    @Html.ActionLink("Go home","Index","Home");
+</div>
+
