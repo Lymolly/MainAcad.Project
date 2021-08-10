@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Airline.DAL.Interfaces;
 
-namespace Airline.BLL.Repoitories
+namespace Airline.BLL.DTOs
 {
-    public class AirlineRepository : IRepository<>
+    public class PlaneDTO
     {
+        public int Id { get; set; }
     }
 }

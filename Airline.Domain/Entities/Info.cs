@@ -8,7 +8,6 @@ namespace Airline.Domain.Entities
 {
     public class Info : BaseEntity
     {
-        public int Id { get; set; }
         public Plane Plane { get; set; }
         public string ArrivalTime { get; set; }
         public string DepartureTime { get; set; }

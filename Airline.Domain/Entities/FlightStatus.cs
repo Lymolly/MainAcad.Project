@@ -2,7 +2,7 @@
 
 namespace Airline.Domain.Entities
 {
-    public struct FlightStatus
+    public class FlightStatus : BaseEntity
     {
         public string Status { get; set; }
     }

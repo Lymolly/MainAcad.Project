@@ -4,20 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Airline.BLL.Identity;
+using Airline.BLL.Repoitories;
+using Airline.DAL.Context;
 using Airline.DAL.Interfaces;
+using Airline.Domain.Entities;
 
 namespace Airline.BLL
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork
     {
-        public void Dispose()
+        private PlaneRepository planeRepo;
+        public UnitOfWork(IRepository<BaseEntity> repository)
         {
-            throw new NotImplementedException();
+            planeRepo = (PlaneRepository)repository;
         }
 
-        public ApplicationUserManager UserManager { get; }
-        public IClientManager ClientManager { get; }
-        public ApplicationRoleManager RoleManager { get; }
+        public PlaneRepository PlaneRepository
+        {
+            get => planeRepo;
+        }
+       
         public Task SaveAsync()
         {
             throw new NotImplementedException();
