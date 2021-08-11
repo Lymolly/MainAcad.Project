@@ -30,6 +30,16 @@ namespace AirlineProj.Controllers
         {
             get => HttpContext.GetOwinContext().Authentication;
         }
+
+        //private Mapper MapperConfig
+        //{
+        //    get
+        //    {
+        //        MapperConfig cfg = new MapperConfig();
+        //        return cfg.Map<T>
+        //    }
+        //}
+
         [HttpGet]
         public ActionResult Login()
         {

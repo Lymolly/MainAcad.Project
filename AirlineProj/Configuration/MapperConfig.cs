@@ -7,9 +7,9 @@ using AutoMapper;
 
 namespace AirlineProj.Configuration
 {
-    public class MapperCfg
+    public class MapperConfig
     {
-        public static Mapper Map<T>()
+        public Mapper Map<T>()
         {
             var cfg = new MapperConfiguration(c => c.CreateMap<T, UserDTO>());
             return new Mapper(cfg);

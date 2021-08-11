@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Airline.BLL.Services;
 
 namespace AirlineProj.Controllers
 {
     //[Authorize(Roles ="admin")]
     public class HomeController : Controller
     {
+        PlaneService pService;
+        public HomeController()
+        {
+            pService = new PlaneService();
+        }
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult Planes()
+        {
+            var planes = pService.GetAllPlanes();
+            return View(planes);
         }
         //[Authorize(Roles = "admin")]
         public ActionResult About()

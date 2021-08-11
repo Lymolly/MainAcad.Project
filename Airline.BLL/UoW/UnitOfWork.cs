@@ -14,9 +14,11 @@ namespace Airline.BLL
     public class UnitOfWork
     {
         private PlaneRepository planeRepo;
-        public UnitOfWork(IRepository<BaseEntity> repository)
+        private AirlineContext db;
+        public UnitOfWork()
         {
-            planeRepo = (PlaneRepository)repository;
+            db = new AirlineContext();
+            planeRepo = new PlaneRepository(db);
         }
 
         public PlaneRepository PlaneRepository
@@ -24,9 +26,9 @@ namespace Airline.BLL
             get => planeRepo;
         }
        
-        public Task SaveAsync()
+        public async Task SaveAsync()
         {
-            throw new NotImplementedException();
+            await planeRepo.Save();
         }
     }
 }
