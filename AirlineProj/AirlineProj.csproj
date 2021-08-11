@@ -172,15 +172,19 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Configuration\MapperConfig.cs" />
+    <Compile Include="Configuration\MapperConfigProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AirlineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageAirlinesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\InfosViewModels\FlightStatusViewModel.cs" />
+    <Compile Include="Models\InfosViewModels\InfoViewModel.cs" />
+    <Compile Include="Models\InfosViewModels\PassengerViewModel.cs" />
+    <Compile Include="Models\InfosViewModels\PlaneViewModel.cs" />
+    <Compile Include="Models\InfosViewModels\WayViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -243,11 +247,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\RegisterSucceded.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Airline\AllInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\ViewModels\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Airline\" />
     <Folder Include="Views\ManageAirlines\" />
   </ItemGroup>
   <ItemGroup>

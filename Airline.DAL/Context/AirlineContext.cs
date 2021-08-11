@@ -27,7 +27,7 @@ namespace Airline.DAL.Context
         protected override void Seed(AirlineContext context)
         {
             //Way
-            var way = new Way() { Length = "700km", Time = "3 hours" };
+            var way = new Way() { Length = "700km", Time = "3 hours",From="Kyiv",To="Istanbul" };
             //Passengers
             var passenger1 = new Passenger { Age = 20, FullName = "Vasya Petya", Gender = "Male" };
             var passenger2 = new Passenger { Age = 25, FullName = "dasds", Gender = "Female" };
@@ -45,10 +45,10 @@ namespace Airline.DAL.Context
             var status = new FlightStatus { Status = "Arriving" };
 
             //Add to contet & save
-            context.Planes.Add(plane);
             context.Ways.Add(way);
             context.Statuses.Add(status);
             context.Passengers.AddRange(passes);
+            context.Planes.Add(plane);
             context.SaveChanges();
             //Info
             var info = new Info
@@ -61,7 +61,7 @@ namespace Airline.DAL.Context
                 Passengers = plane.Passengers,
                 Plane = plane,
                 Price = 1200,
-                Route = plane.Way,
+                Route = way,
                 Terminal = 4
             };
             context.Infos.Add(info);

@@ -14,21 +14,25 @@ namespace Airline.BLL
     public class UnitOfWork
     {
         private PlaneRepository planeRepo;
+        private InfoRepository infoRepo;
         private AirlineContext db;
         public UnitOfWork()
         {
             db = new AirlineContext();
-            planeRepo = new PlaneRepository(db);
         }
 
         public PlaneRepository PlaneRepository
         {
-            get => planeRepo;
+            get => planeRepo ?? (planeRepo = new PlaneRepository(db));
         }
-       
+        public InfoRepository InfoRepository
+        {
+            get => infoRepo ?? (infoRepo = new InfoRepository(db)); 
+        }
+
         public async Task SaveAsync()
         {
-            await planeRepo.Save();
+            await db.SaveChangesAsync();
         }
     }
 }

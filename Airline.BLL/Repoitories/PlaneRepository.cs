@@ -58,10 +58,5 @@ namespace Airline.BLL.Repoitories
             
             Database.Planes.Remove(entity);
         }
-
-        public async Task<int> Save()
-        {
-            return await Database.SaveChangesAsync();
-        }
     }
 }

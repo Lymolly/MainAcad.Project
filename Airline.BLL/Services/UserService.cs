@@ -34,12 +34,18 @@ namespace Airline.BLL.Services
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 }
 
-                await Database.UserManager.AddToRoleAsync(user.Id, userDTO.Role);
+                foreach (var role in userDTO.Role)
+                {
+                    if (role != null)
+                    {
+                        await Database.UserManager.AddToRoleAsync(user.Id, role);
+                    }
+                }
                 ClientProfile clientProfile = new ClientProfile()
                     {Id = user.Id, Address = userDTO.Address, Name = userDTO.Name};
                 Database.ClientManager.Create(clientProfile);
                 await Database.SaveAsync();
-                return new OperationDetails(true, "Register Succed!", "");
+                return new OperationDetails(true, "Register Succeded!", "");
             }
             else
             {

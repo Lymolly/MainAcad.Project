@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Airline.BLL.DTOs;
+using Airline.BLL.Interfaces;
 using Airline.BLL.Repoitories;
 using Airline.Domain.Entities;
 using AutoMapper;
@@ -18,7 +19,7 @@ namespace Airline.BLL.Services
             uow = new UnitOfWork();
         }
 
-        public IEnumerable<PlaneDTO> GetAllPlanes()
+        public IEnumerable<PlaneDTO> GetAll()
         {
             var res = uow.PlaneRepository.GetAll().AsEnumerable();
             var config = new MapperConfiguration(cfg =>

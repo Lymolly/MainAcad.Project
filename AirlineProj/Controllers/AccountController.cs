@@ -19,6 +19,7 @@ using AutoMapper;
 
 namespace AirlineProj.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private IUserService UserService
@@ -39,13 +40,13 @@ namespace AirlineProj.Controllers
         //        return cfg.Map<T>
         //    }
         //}
-
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
-
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model)
@@ -73,6 +74,7 @@ namespace AirlineProj.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -80,6 +82,7 @@ namespace AirlineProj.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             //await SetInitialDataAsync(model);
@@ -88,7 +91,7 @@ namespace AirlineProj.Controllers
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<RegisterViewModel,UserDTO>());
                 var mapper = new Mapper(config);
                 UserDTO userDto = mapper.Map<UserDTO>(model);
-                userDto.Role = "user";
+                userDto.Role = new List<string> {"user"};
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succeeded)
                 {
@@ -111,7 +114,7 @@ namespace AirlineProj.Controllers
                 Password = model.Password,
                 Name = model.Name,
                 Address = model.Password,
-                Role = "admin",
+                Role = new List<string>{"admin"},
             }, new List<string> { "user", "admin" });
         }
 

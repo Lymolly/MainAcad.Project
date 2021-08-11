@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
+using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Airline.DAL.Context;
 using Airline.DAL.Interfaces;
 using Airline.Domain.Entities;
 
@@ -10,14 +11,23 @@ namespace Airline.BLL.Repoitories
 {
     public class InfoRepository : IRepository<Info>
     {
+        private AirlineContext Database { get; }
+
+        public InfoRepository(AirlineContext context)
+        {
+            Database = context;
+        }
         public IQueryable<Info> GetAll()
         {
-            throw new NotImplementedException();
+             var ent = Database.Infos
+                 .Include(i => i.Plane)
+                 .Include(i => i.Route).AsNoTracking().AsQueryable();
+            return ent;
         }
 
-        public Task<Info> GetById(int id)
+        public async Task<Info> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await Database.Infos.FindAsync(id);
         }
 
         public void Add(Info entity)
@@ -40,9 +50,9 @@ namespace Airline.BLL.Repoitories
             throw new NotImplementedException();
         }
 
-        public Task<int> Save()
-        {
-            throw new NotImplementedException();
-        }
+        //public Task<int> Save()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

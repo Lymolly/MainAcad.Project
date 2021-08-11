@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Airline.Domain.Entities;
@@ -13,7 +14,7 @@ namespace Airline.DAL.Interfaces
         void Update(T entity);
         Task DeleteById(int id);
         void Delete(T entity);
-        Task<int> Save();
+        //Task<int> Save();
 
     }
 }

@@ -7,7 +7,7 @@
             @Html.AntiForgeryToken()
 
             <ul class="nav navbar-nav navbar-right">
-                @if (User.Identity.GetUserName() == "Denis")
+                @if (User.IsInRole("admin"))
                 {
                     <li>@Html.ActionLink("Admin area","Index",new {area = "Admin",controller = "Admin"})</li>
                 }
