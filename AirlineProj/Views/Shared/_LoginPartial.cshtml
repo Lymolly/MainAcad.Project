@@ -9,7 +9,7 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (User.IsInRole("admin"))
                 {
-                    <li>@Html.ActionLink("Admin area","Index",new {area = "Admin",controller = "Admin"})</li>
+                    <li>@Html.ActionLink("Admin area", "AdminIndex", new {area = "Admin",controller = "Admin"})</li>
                 }
                 <li style="color: darkblue; font-size: 20px; font-weight: bold;margin-left:-10px;">
                     Welcome, @User.Identity.GetUserName()!@*, "GetName", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})*@

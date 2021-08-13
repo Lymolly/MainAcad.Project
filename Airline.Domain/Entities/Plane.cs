@@ -13,7 +13,6 @@ namespace Airline.Domain.Entities
         public int Wingspan { get; set; }
         public decimal Speed { get; set; }
         public string PlaneNumber { get; set; }
-        public ICollection<Passenger> Passengers { get; set; }
         public Way Way { get; set; }
     }
 }

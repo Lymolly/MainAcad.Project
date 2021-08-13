@@ -1,0 +1,30 @@
+﻿@model AirlineProj.Models.InfosViewModels.InfoViewModel
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Details</h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>Arrival time:</dt>
+            <dd>@Html.DisplayFor(model => model.ArrivalTime)</dd>
+            <dt>Departure time:</dt>
+            <dd>@Html.DisplayFor(model => model.DepartureTime)</dd>
+            <dt>Price:</dt>
+            <dd>@Html.DisplayFor(model => model.Price)</dd>
+            <dt>Plane:</dt>
+            <dd>@Html.DisplayFor(model => model.Plane.Model)</dd>
+            <dt>Flight status:</dt>
+            <dd>@Html.DisplayFor(model => model.FlightStatus)</dd>
+            <dt>Gate number:</dt>
+            <dd>@Html.DisplayFor(model => model.Gate)</dd>
+            <dt>Route:</dt>
+            <dd>@Html.DisplayFor(model => model.Route.Destination)</dd>
+            <dd>@Html.DisplayFor(model => model.Route.Time)</dd>
+            <dd>@Html.DisplayFor(model => model.Route.Length)</dd>
+            <dt>Terminal number:</dt>
+            <dd>@Html.DisplayFor(model => model.Terminal)</dd>
+        </dl>
+    </div>
+</div>

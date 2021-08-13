@@ -21,23 +21,29 @@ namespace Airline.BLL.Repoitories
         {
              var ent = Database.Infos
                  .Include(i => i.Plane)
-                 .Include(i => i.Route).AsNoTracking().AsQueryable();
+                 .Include(i => i.Route)
+                 .Include(i => i.Passengers)
+                 .Include(i => i.FlightStatus).AsNoTracking().AsQueryable();
             return ent;
         }
 
         public async Task<Info> GetById(int id)
         {
-            return await Database.Infos.FindAsync(id);
+            return await Database.Infos
+                .Include(i => i.Plane)
+                .Include(i => i.Route)
+                .Include(i => i.Passengers)
+                .Include(i => i.FlightStatus).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public void Add(Info entity)
         {
-            throw new NotImplementedException();
+            Database.Infos.Add(entity);
         }
 
         public void Update(Info entity)
         {
-            throw new NotImplementedException();
+            Database.Entry(entity).State = EntityState.Modified;
         }
 
         public Task DeleteById(int id)

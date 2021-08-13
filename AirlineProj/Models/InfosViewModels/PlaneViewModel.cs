@@ -13,7 +13,6 @@ namespace AirlineProj.Models.InfosViewModels
         public int Wingspan { get; set; }
         public decimal Speed { get; set; }
         public string PlaneNumber { get; set; }
-        public ICollection<PassengerViewModel> Passengers { get; set; }
         public WayViewModel Way { get; set; }
     }
 }

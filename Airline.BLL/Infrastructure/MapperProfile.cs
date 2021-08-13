@@ -13,10 +13,11 @@ namespace Airline.BLL.Infrastructure
     {
         public MapperProfile()
         {
-            CreateMap<Passenger, PassengerDTO>().ReverseMap();
+            CreateMap<FlightStatus, FlightStatusDTO>();
             CreateMap<WayDTO, Way>().ReverseMap();
             CreateMap<Plane, PlaneDTO>().ReverseMap();
             CreateMap<Info, InfoDTO>().ReverseMap();
+            CreateMap<Passenger, PassengerDTO>().ReverseMap();
         }
         
     }

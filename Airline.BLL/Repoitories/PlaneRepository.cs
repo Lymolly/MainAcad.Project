@@ -21,7 +21,6 @@ namespace Airline.BLL.Repoitories
         public IQueryable<Plane> GetAll()
         {
             return Database.Planes
-                .Include(p => p.Passengers)
                 .Include(p => p.Way)
                 .AsNoTracking().AsQueryable();
         }
@@ -29,7 +28,6 @@ namespace Airline.BLL.Repoitories
         public async Task<Plane> GetById(int id)
         {
             return await Database.Planes
-                .Include(p => p.Passengers)
                 .Include(p => p.Way)
                 .AsNoTracking().FirstAsync(p => p.Id == id);
         }

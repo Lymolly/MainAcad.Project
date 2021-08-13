@@ -14,7 +14,6 @@ namespace Airline.BLL.DTOs
         public int Wingspan { get; set; }
         public decimal Speed { get; set; }
         public string PlaneNumber { get; set; }
-        public ICollection<PassengerDTO> Passengers { get; set; }
         public WayDTO Way { get; set; }
     }
 }

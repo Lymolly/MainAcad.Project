@@ -18,7 +18,7 @@ namespace AirlineProj.Configuration
             CreateMap<PassengerDTO, PassengerViewModel>().ReverseMap();
             CreateMap<FlightStatusDTO, FlightStatusViewModel>().ReverseMap();
             CreateMap<WayViewModel, WayDTO>().ReverseMap()
-                .ForMember("Destination",opt =>opt.MapFrom(m =>m.From + "--" +m.To));
+                .ForMember("Destination",opt =>opt.MapFrom(m =>m.From + "---" +m.To));
             CreateMap<RegisterViewModel, UserDTO>();
         }
     }

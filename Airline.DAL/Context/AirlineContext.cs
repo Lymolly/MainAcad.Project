@@ -28,26 +28,15 @@ namespace Airline.DAL.Context
         {
             //Way
             var way = new Way() { Length = "700km", Time = "3 hours",From="Kyiv",To="Istanbul" };
-            //Passengers
-            var passenger1 = new Passenger { Age = 20, FullName = "Vasya Petya", Gender = "Male" };
-            var passenger2 = new Passenger { Age = 25, FullName = "dasds", Gender = "Female" };
-            var passenger3 = new Passenger { Age = 19, FullName = "Allah", Gender = "Male" };
-            var passenger4 = new Passenger { Age = 43, FullName = "Akbar", Gender = "Male" };
-
-            List<Passenger> passes = new List<Passenger>
-            {
-                passenger1, passenger2, passenger3, passenger4
-            };
             //Plane
             var plane = new Plane
-                { Model = "Airbus 737", Capacity = 200, PlaneNumber = "44AC", Speed = 500, Wingspan = 250, Way = way, Passengers = passes };
+                { Model = "Airbus 737", Capacity = 200, PlaneNumber = "44AC", Speed = 500, Wingspan = 250, Way = way};
             //Status
             var status = new FlightStatus { Status = "Arriving" };
 
             //Add to contet & save
             context.Ways.Add(way);
             context.Statuses.Add(status);
-            context.Passengers.AddRange(passes);
             context.Planes.Add(plane);
             context.SaveChanges();
             //Info
@@ -58,13 +47,23 @@ namespace Airline.DAL.Context
                 FlightNumber = 33,
                 FlightStatus = status,
                 Gate = 3,
-                Passengers = plane.Passengers,
+                //Passengers = plane.Passengers,
                 Plane = plane,
                 Price = 1200,
                 Route = way,
                 Terminal = 4
             };
             context.Infos.Add(info);
+            var passenger1 = new Passenger { Age = 20, FullName = "Vasya Petya", Gender = "Male",FlightInfo = info };
+            var passenger2 = new Passenger { Age = 25, FullName = "dasds", Gender = "Female", FlightInfo = info };
+            var passenger3 = new Passenger { Age = 19, FullName = "Allah", Gender = "Male", FlightInfo = info };
+            var passenger4 = new Passenger { Age = 43, FullName = "Akbar", Gender = "Male", FlightInfo = info };
+
+            List<Passenger> passes = new List<Passenger>
+            {
+                passenger1, passenger2, passenger3, passenger4
+            };
+            context.Passengers.AddRange(passes);
             context.SaveChanges();
             base.Seed(context);
         }

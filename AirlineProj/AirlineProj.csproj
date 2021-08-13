@@ -210,7 +210,8 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminIndex.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -249,11 +250,12 @@
     <Content Include="Views\Account\RegisterSucceded.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Airline\AllInfo.cshtml" />
+    <Content Include="Views\Airline\Details.cshtml" />
+    <Content Include="Views\Airline\Buy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\ViewModels\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\ManageAirlines\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
