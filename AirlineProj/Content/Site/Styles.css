@@ -1,9 +1,12 @@
-﻿html {
+﻿html, body {
     background-color: peachpuff;
-}
-
-body {
     margin: 0;
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .bg-img {

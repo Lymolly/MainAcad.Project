@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Airline.BLL.DTOs;
+using Airline.BLL.Infrastructure;
 using Airline.BLL.Interfaces;
 using Airline.BLL.Repoitories;
 using Airline.Domain.Entities;
@@ -14,6 +15,8 @@ namespace Airline.BLL.Services
     public class PlaneService
     {
         private UnitOfWork uow;
+        static MapperConfiguration config =
+            new MapperConfiguration(cfg => cfg.AddProfile(new MapperProfile()));
         public PlaneService()
         {
             uow = new UnitOfWork();
@@ -29,13 +32,18 @@ namespace Airline.BLL.Services
                 cfg.CreateMap<Plane, PlaneDTO>();
             });
 
-                //.ForMember("Passengers",opt =>opt.MapFrom(src => src.Passengers))
-                //.ForMember("Way",opt => opt.MapFrom(src => src.Way)));
             var mapper = new Mapper(config);
 
             var planes = mapper.Map<IEnumerable<PlaneDTO>>(res);
             var planesDto = planes;
             return planesDto;
+        }
+        public async Task UpdatePlane(PlaneDTO info)
+        {
+            var mapper = new Mapper(config);
+            var data = mapper.Map<Plane>(info);
+            uow.PlaneRepository.Update(data);
+            await uow.SaveAsync();
         }
     }
 }

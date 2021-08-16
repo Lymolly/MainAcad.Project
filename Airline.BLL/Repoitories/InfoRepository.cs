@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Airline.BLL.Repoitories
                  .Include(i => i.Plane)
                  .Include(i => i.Route)
                  .Include(i => i.Passengers)
-                 .Include(i => i.FlightStatus).AsNoTracking().AsQueryable();
+                 .Include(i => i.FlightStatus)/*.AsNoTracking()*/.AsQueryable();
             return ent;
         }
 
@@ -44,6 +45,7 @@ namespace Airline.BLL.Repoitories
         public void Update(Info entity)
         {
             Database.Entry(entity).State = EntityState.Modified;
+            //Database.SaveChanges();
         }
 
         public Task DeleteById(int id)
@@ -55,10 +57,5 @@ namespace Airline.BLL.Repoitories
         {
             throw new NotImplementedException();
         }
-
-        //public Task<int> Save()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

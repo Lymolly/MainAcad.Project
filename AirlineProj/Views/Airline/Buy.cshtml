@@ -32,12 +32,15 @@
     {
         @Html.HiddenFor(model => model.Id)
 
+        @Html.HiddenFor(model => model.Plane.Id)
         @Html.HiddenFor(model => model.Plane)
 
+        @Html.HiddenFor(model => model.FlightStatus.Id)
         @Html.HiddenFor(model => model.FlightStatus)
 
         @Html.HiddenFor(model => model.Gate)
 
+        @Html.HiddenFor(model => model.Route.Id)
         @Html.HiddenFor(model => model.Route)
 
         @Html.HiddenFor(model => model.Terminal)

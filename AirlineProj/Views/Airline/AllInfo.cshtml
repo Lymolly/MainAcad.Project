@@ -34,37 +34,39 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ArrivalTime)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DepartureTime)
-    </td>
-    <td>
-        @Html.DisplayFor(model => item.Route.Destination)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Price)
-    </td>
-    <td>
-        @Html.ActionLink("Details", "Details", "Airline", new { id = item.Id }, new { @class = "infoItem" })
-    </td>
-    @if (User.Identity.IsAuthenticated)
-    {
-        if (User.IsInRole("admin"))
-        {
+        <tr>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { area = "Admin", controller = "Admin", id = item.Id })
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
             </td>
-        }
-        <td>
-            <input type="button" class="btn btn-primary" value="Buy" onclick="location.href = '@Url.Action("Buy", "Airline", new {id = item.Id})'" />
-        </td>
-    }
-</tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureTime)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Route.Destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Airline", new { id = item.Id }, new { @class = "infoItem" })
+            </td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { area = "Admin", controller = "Admin", id = item.Id })
+                    </td>
+                }
+                <td>
+                    <input type="button" class="btn btn-primary" value="Buy" onclick="location.href = '@Url.Action("Buy", "Airline", new {id = item.Id})'" />
+                </td>
+            }
+        </tr>
     }
 </table>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 @*Modal-icon script*@
 @section scripts{
     <script type="text/javascript">
@@ -76,11 +78,10 @@
                 e.preventDefault();
                 $.get(this.href, function (data) {
                     $('#dialogContent').html(data);
-                    $('#modDialog').modal("show");
+                    $('#modDialog').modal('show');
                 });
             });
         })
     </script>
 }
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
+

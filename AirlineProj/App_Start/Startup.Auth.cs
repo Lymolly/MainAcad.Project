@@ -16,7 +16,7 @@ namespace AirlineProj
         IServiceCreator serviceCreator = new ServiceCreator();
         public void ConfigureAuth(IAppBuilder app)
         {
-            app.CreatePerOwinContext<IUserService>(CreateUserService);
+            app.CreatePerOwinContext(CreateUserService);/*<IUserService>(CreateUserService);*/
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,

@@ -21,17 +21,24 @@
             </div>
         </div>
     </div>
-
+<style>
+    .body-content {
+        flex: 1 1 auto;
+    }
+</style>
     <div class="container body-content">
         @RenderBody()
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @*<div class="wrapper">
+        <foter>
+            <div class="footer">
+                <div class="foo"> <p>Main Academy© 2021 All Rights Reserved</p></div>
+            </div>
+        </foter>
+    </div>*@
 </body>
-<foter>
-    <div class="footer">
-        <div class="foo"> <p>Main Academy© 2021 All Rights Reserved</p></div>
-    </div>
-</foter>
 </html>
+

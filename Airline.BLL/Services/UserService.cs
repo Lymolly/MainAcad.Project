@@ -80,7 +80,6 @@ namespace Airline.BLL.Services
         public void Dispose()
         {
             Database.Dispose();
-
         }
     }
 }
