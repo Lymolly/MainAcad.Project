@@ -42,6 +42,18 @@ namespace AirlineProj.Controllers
             return HttpNotFound();
         }
 
+        public ActionResult CheapestFlight()
+        {
+            var info = iService.GetAll().OrderBy(m => m.Price).FirstOrDefault();
+            if (info != null)
+            {
+                var mapper = new Mapper(config);
+                var res = mapper.Map<InfoViewModel>(info);
+                return PartialView(res);
+            }
+            return HttpNotFound();
+        }
+
         [HttpGet]
         public async Task<ActionResult> Buy(int? id)
         {

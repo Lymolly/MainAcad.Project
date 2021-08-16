@@ -5,3 +5,25 @@
 
 <h2>Welcome to admin area</h2>
 
+@*<style>
+    .container {
+        margin-left: 300px;
+        height: 200px;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+</style>*@
+<div class="container">
+    <div class="vertical-center">
+        <input type="button" class="btn btn-primary" value="Create new" 
+               onclick="location.href = '@Url.Action("CreateNew", "Admin")'" />
+    </div>
+</div>

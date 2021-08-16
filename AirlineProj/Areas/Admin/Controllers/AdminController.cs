@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Airline.BLL.DTOs;
 using Airline.BLL.Services;
 using AirlineProj.Configuration;
+using AirlineProj.ModelBinder;
 using AirlineProj.Models.InfosViewModels;
 using AutoMapper;
 
@@ -43,12 +44,34 @@ namespace AirlineProj.Areas.Admin.Controllers
             return View(res);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(InfoViewModel model)
         {
             var mapper = new Mapper(config);
             var res = mapper.Map<InfoDTO>(model);
             await iService.UpdateInfo(res);
             return RedirectToAction("AllInfo", "Airline",new {area = ""});
+        }
+
+        [HttpGet]
+        public ActionResult CreateNew()
+        {
+            SelectList st = new SelectList(Statuses());
+            ViewBag.Statuses = st;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateNew(CreateInfoViewModel model)
+        {
+            var mapper = new Mapper(config);
+            if (ModelState.IsValid)
+            {
+                await iService.AddNewInfo(mapper.Map<InfoDTO>(model));
+                return RedirectToAction("AllInfo", "Airline", new { area = "" });
+            }
+            return View(model);
         }
         //[HttpPost]
         //public async Task<ActionResult> EditPlane(InfoViewModel model)

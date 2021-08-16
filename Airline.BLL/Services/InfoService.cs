@@ -42,7 +42,7 @@ namespace Airline.BLL.Services
             var mapper = new Mapper(config);
             var data = mapper.Map<Info>(info);
             uow.InfoRepository.Add(data);
-            //await uow.SaveAsync();
+            await uow.SaveAsync();
         }
 
         public async Task UpdateInfo(InfoDTO info)

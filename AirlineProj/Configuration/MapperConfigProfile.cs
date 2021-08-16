@@ -14,6 +14,7 @@ namespace AirlineProj.Configuration
         public MapperConfigProfile()
         {
             CreateMap<InfoDTO, InfoViewModel>().ReverseMap();
+            CreateMap<CreateInfoViewModel,InfoDTO>();
             CreateMap<PlaneDTO, PlaneViewModel>().ReverseMap();
             CreateMap<PassengerDTO, PassengerViewModel>().ReverseMap();
             CreateMap<FlightStatusDTO, FlightStatusViewModel>().ReverseMap();

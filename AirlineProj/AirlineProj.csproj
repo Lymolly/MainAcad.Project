@@ -179,7 +179,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelBinder\MyModelBinder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CreateViewModels\CreateInfoViewModel.cs" />
     <Compile Include="Models\InfosViewModels\FlightStatusViewModel.cs" />
     <Compile Include="Models\InfosViewModels\InfoViewModel.cs" />
     <Compile Include="Models\InfosViewModels\PassengerViewModel.cs" />
@@ -213,6 +215,7 @@
     <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\AdminIndex.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Test.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CreateNew.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -251,6 +254,7 @@
     <Content Include="Views\Airline\AllInfo.cshtml" />
     <Content Include="Views\Airline\Details.cshtml" />
     <Content Include="Views\Airline\Buy.cshtml" />
+    <Content Include="Views\Airline\CheapestFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\ViewModels\" />

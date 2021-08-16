@@ -13,10 +13,9 @@
             <p class="titleText">Airline info</p>
             <div class="topnav">
                 <ul>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("All flights", "AllInfo", "Airline")</li>
-                    <li>@Html.ActionLink("News", "News", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("All flights", "AllInfo", "Airline", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("News", "News", "Home", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,33 @@
+﻿@model AirlineProj.Models.InfosViewModels.InfoViewModel
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Cheapest</h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>Arrival time:</dt>
+            <dd>@Html.DisplayFor(model => model.ArrivalTime)</dd>
+            <dt>Departure time:</dt>
+            <dd>@Html.DisplayFor(model => model.DepartureTime)</dd>
+            <dt>Price:</dt>
+            <dd>@Html.DisplayFor(model => model.Price) hrns</dd>
+            <dt>Plane:</dt>
+            <dd>@Html.DisplayFor(model => model.Plane.Model)</dd>
+            <dt>Flight status:</dt>
+            <dd>@Html.DisplayFor(model => model.FlightStatus.Status)</dd>
+            <dt>Gate number:</dt>
+            <dd>@Html.DisplayFor(model => model.Gate)</dd>
+            <dt>Route:</dt>
+            <dd>@Html.DisplayFor(model => model.Route.Destination)</dd>
+            <dd>@Html.DisplayFor(model => model.Route.Time)</dd>
+            <dd>@Html.DisplayFor(model => model.Route.Length)</dd>
+            <dt>Terminal number:</dt>
+            <dd>@Html.DisplayFor(model => model.Terminal)</dd>
+        </dl>
+        <input type="button" class="btn btn-primary" value="Buy" 
+               onclick="location.href = '@Url.Action("Buy", "Airline", new {id = Model.Id})'" />
+    </div>
+</div>
