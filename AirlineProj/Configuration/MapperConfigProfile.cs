@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Airline.BLL.DTOs;
 using AirlineProj.Models;
+using AirlineProj.Models.CreateViewModels;
 using AirlineProj.Models.InfosViewModels;
 using AutoMapper;
 
@@ -14,7 +15,8 @@ namespace AirlineProj.Configuration
         public MapperConfigProfile()
         {
             CreateMap<InfoDTO, InfoViewModel>().ReverseMap();
-            CreateMap<CreateInfoViewModel,InfoDTO>();
+            CreateMap<CreateInfoViewModel,InfoDTO>().ReverseMap();
+            CreateMap<CreatePassengerViewModel, PassengerDTO>().ReverseMap();
             CreateMap<PlaneDTO, PlaneViewModel>().ReverseMap();
             CreateMap<PassengerDTO, PassengerViewModel>().ReverseMap();
             CreateMap<FlightStatusDTO, FlightStatusViewModel>().ReverseMap();

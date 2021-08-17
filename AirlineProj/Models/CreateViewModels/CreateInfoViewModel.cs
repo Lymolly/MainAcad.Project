@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AirlineProj.ModelBinder;
+using AirlineProj.Models.CreateViewModels;
 
 namespace AirlineProj.Models.InfosViewModels
 {
     [ModelBinder(typeof(MyModelBinder))]
     public class CreateInfoViewModel
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public PlaneViewModel Plane { get; set; }
         public string ArrivalTime { get; set; }
         public string DepartureTime { get; set; }
@@ -20,6 +21,6 @@ namespace AirlineProj.Models.InfosViewModels
         public int Terminal { get; set; }
         public int Gate { get; set; }
         public decimal Price { get; set; }
-        public ICollection<PassengerViewModel> Passengers { get; set; }
+        public ICollection<CreatePassengerViewModel> Passengers { get; set; }
     }
 }

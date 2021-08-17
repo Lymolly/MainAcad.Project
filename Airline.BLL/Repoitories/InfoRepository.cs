@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,11 @@ namespace Airline.BLL.Repoitories
         }
         public IQueryable<Info> GetAll()
         {
-             var ent = Database.Infos
-                 .Include(i => i.Plane)
-                 .Include(i => i.Route)
-                 .Include(i => i.Passengers)
-                 .Include(i => i.FlightStatus)/*.AsNoTracking()*/.AsQueryable();
+            var ent = Database.Infos
+                .Include(i => i.Plane)
+                .Include(i => i.Route)
+                .Include(i => i.Passengers)
+                .Include(i => i.FlightStatus).AsNoTracking().AsQueryable();
             return ent;
         }
 
@@ -46,6 +47,10 @@ namespace Airline.BLL.Repoitories
         {
             Database.Entry(entity).State = EntityState.Modified;
             //Database.SaveChanges();
+        }
+        public void AddPassenger(Info entity)
+        {
+            Database.Entry(entity).State = EntityState.Modified;
         }
 
         public Task DeleteById(int id)

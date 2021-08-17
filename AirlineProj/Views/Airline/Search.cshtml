@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AirlineProj.Models.InfosViewModels.InfoViewModel>
+<div id="searchresults" style="border:1px solid darkgreen">
+    <h3>Searched flights : </h3>
+    <ul>
+        @foreach (var item in Model)
+        { 
+            <li>Destination: @item.Route.Destination</li>
+            <li>Price: @item.Price hrns</li>
+            <li>Arrival time: @item.ArrivalTime</li>
+            <li>Departure time: @item.DepartureTime</li>
+            if (User.Identity.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-primary" value="Buy" 
+                       onclick="location.href = '@Url.Action("Buy", "Airline", new {id = item.Id})'" />
+            }
+            else
+            {
+                <input type="button" disabled class="btn btn-primary" value="Buy" 
+                       onclick="location.href = '@Url.Action("Buy", "Airline", new {id = item.Id})'" />
+                <p>To buy ticket, please register a new account or sign in</p>
+            }
+            <input type="button" id="butt" class="btn btn-primary" value="Hide" />
+        }
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#butt").click(function (e) {
+            $("#searchresults").hide();
+        });
+    })
+</script>

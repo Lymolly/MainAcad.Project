@@ -27,7 +27,17 @@
             <dt>Terminal number:</dt>
             <dd>@Html.DisplayFor(model => model.Terminal)</dd>
         </dl>
-        <input type="button" class="btn btn-primary" value="Buy" 
-               onclick="location.href = '@Url.Action("Buy", "Airline", new {id = Model.Id})'" />
+        @if (User.Identity.IsAuthenticated)
+        {
+            <input type="button" class="btn btn-primary" value="Buy" 
+                   onclick="location.href = '@Url.Action("Buy", "Airline", new {id = Model.Id})'" />
+        }
+        else
+        {
+            <input type="button" disabled class="btn btn-primary" value="Buy" 
+                   onclick="location.href = '@Url.Action("Buy", "Airline", new {id = Model.Id})'" />
+            <p>To buy ticket, please register a new account or sign in</p>
+        }
+        
     </div>
 </div>

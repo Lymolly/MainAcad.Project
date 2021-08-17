@@ -19,36 +19,29 @@
         margin-left: 30px;
         border-radius: 4px;
     }
+
     input:hover {
-        background-color: darkgoldenrod;
-        cursor: pointer;
+            background-color: darkgoldenrod;
+            cursor: pointer;
+    }
+    .inputs {
+        margin: 0 auto;
     }
 </style>
 <div>
-    Now is @Model.Passengers.Count() on plane,available: @(Model.Plane.Capacity - Model.Passengers.Count()) / @Model.Plane.Capacity. 
+    Now is @Model.Passengers.Count() on plane,available: @(Model.Plane.Capacity - Model.Passengers.Count()) / @Model.Plane.Capacity.
 </div>
 <div>
     @using (Html.BeginForm("Buy", "Airline", FormMethod.Post))
     {
-        @Html.HiddenFor(model => model.Id)
 
-        @Html.HiddenFor(model => model.Plane.Id)
-        @Html.HiddenFor(model => model.Plane)
-
-        @Html.HiddenFor(model => model.FlightStatus.Id)
-        @Html.HiddenFor(model => model.FlightStatus)
-
-        @Html.HiddenFor(model => model.Gate)
-
-        @Html.HiddenFor(model => model.Route.Id)
-        @Html.HiddenFor(model => model.Route)
-
-        @Html.HiddenFor(model => model.Terminal)
-
-        @Html.HiddenFor(model => model.Passengers)
-
-        @Html.HiddenFor(model => model.FlightNumber)
-        <input type="submit" class="btn btn-primary" value="Buy" />
+        @Html.Hidden("modelId",Model.Id)
+        <div class="inputs">
+            <p><b>Enter gender:</b></p>
+            <span>Male: </span><input type="radio" name="gender" value="Male" />
+            <span>Female: </span><input type="radio" name="gender" value="Female"/>
+            <input type="submit" class="btn btn-primary" value="Buy" />
+        </div>
     }
     <input type="button" class="btn btn-primary" value="Go back" onclick="location.href = '@Url.Action("AllInfo", "Airline")'" />
 </div>

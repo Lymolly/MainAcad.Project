@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,9 +32,10 @@ namespace Airline.BLL.Services
 
         public async Task<InfoDTO> GetById(int id)
         {
-            var res = await uow.InfoRepository.GetById(id);
+            var infos = uow.InfoRepository.GetAll();
+            //var res = await infos.FirstOrDefaultAsync(i => i.Id == id);
             var mapper = new Mapper(config);
-            var info = mapper.Map<InfoDTO>(res);
+            var info = mapper.Map<InfoDTO>(await infos.FirstOrDefaultAsync(i => i.Id == id));
             return info;
         }
 
@@ -51,6 +53,13 @@ namespace Airline.BLL.Services
             var data = mapper.Map<Info>(info);
             uow.PlaneRepository.Update(data.Plane);
             uow.InfoRepository.Update(data);
+            await uow.SaveAsync();
+        }
+        public async Task UpdatePassengerInfo(InfoDTO info)
+        {
+            var mapper = new Mapper(config);
+            var data = mapper.Map<Info>(info);
+            uow.InfoRepository.AddPassenger(data);
             await uow.SaveAsync();
         }
     }

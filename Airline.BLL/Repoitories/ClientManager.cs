@@ -23,6 +23,7 @@ namespace Airline.BLL.Repoitories
         }
         public void Dispose()
         {
+            Database.Dispose();
         }
 
     }

@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repoitories\InfoRepository.cs" />
     <Compile Include="Repoitories\ClientManager.cs" />
+    <Compile Include="Repoitories\PassengerRepository.cs" />
     <Compile Include="Repoitories\PlaneRepository.cs" />
     <Compile Include="Services\InfoService.cs" />
     <Compile Include="Services\PlaneService.cs" />

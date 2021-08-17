@@ -15,6 +15,17 @@
         background-color: burlywood;
     }
 </style>
+<p>@ViewBag.Succed</p>
+<div style="padding:30px;">
+    @using (Ajax.BeginForm("Search", "Airline", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input type="text" name="substr" />
+        <input type="submit" value="Search" />
+    }
+    <div id="results"></div>
+</div>
+
 <table class="table table-striped table-bordered table-condensed table-responsive table-hover">
     <tr>
         <th>
@@ -45,7 +56,7 @@
                 @Html.DisplayFor(model => item.Route.Destination)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price) hrns  
+                @Html.DisplayFor(modelItem => item.Price) hrns
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", "Airline", new { id = item.Id }, new { @class = "infoItem" })
@@ -59,15 +70,16 @@
                     </td>
                 }
                 <td>
-                    <input type="button" class="btn btn-primary" value="Buy" onclick="location.href = '@Url.Action("Buy", "Airline", new {id = item.Id})'" />
+                    <input type="button" class="btn btn-primary" value="Buy" onclick="location.href = '@Url.Action("Buy", "Airline", new { id = item.Id })'" />
                 </td>
             }
         </tr>
     }
 </table>
 <div id="cheapestFlight">
-    @Html.ActionLink("Cheapest flight","CheapestFlight",new AjaxOptions{UpdateTargetId = "cheapestFlight" },new {@class = "cheapestFlight"})
+    @Html.ActionLink("Cheapest flight", "CheapestFlight", new AjaxOptions { UpdateTargetId = "cheapestFlight" }, new { @class = "cheapestFlight" })
 </div>
+
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @*Modal-icon scripts*@
@@ -86,7 +98,7 @@
             });
         })
     </script>
-    
+
 
     <script type="text/javascript">
 

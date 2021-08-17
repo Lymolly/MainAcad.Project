@@ -15,6 +15,7 @@ namespace Airline.BLL
     {
         private PlaneRepository planeRepo;
         private InfoRepository infoRepo;
+        private PassengerRepository passengerRepo;
         private AirlineContext db;
         public UnitOfWork()
         {
@@ -28,6 +29,10 @@ namespace Airline.BLL
         public InfoRepository InfoRepository
         {
             get => infoRepo ?? (infoRepo = new InfoRepository(db)); 
+        }
+        public PassengerRepository PassengerRepository
+        {
+            get => passengerRepo ?? (passengerRepo = new PassengerRepository(db));
         }
 
         public async Task SaveAsync()
